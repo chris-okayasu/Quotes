@@ -47,8 +47,45 @@ struct CharactareUI: View {
                             Divider()
                         }
                         
+                        DisclosureGroup("Status (SPOILER ALERT!!!)"){
+                            VStack(alignment: .leading){
+                                if character.status == "Dead" {
+                                    Text("💀 \(character.status)")
+                                        .font(.title2)
+                                } else {
+                                    Text(character.status)
+                                        .font(.title2)
+                                }
+                                
+                                if let death = character.death {
+                                    AsyncImage(url: death.image) {image in
+                                        image
+                                            .resizable()
+                                            .scaledToFit()
+                                            .clipShape(.rect(cornerRadius: 15))
+                                    } placeholder: {
+                                        ProgressView()
+                                    }
+                                    Text("How: ")
+                                        .bold() +
+                                    Text(death.details)
+                                    
+                                    Text("Last Words: ")
+                                        .font(.subheadline) +
+                                    Text("\"\(death.lastWords)\"")
+                                        .font(.subheadline)
+                                        .italic()
+                                }
+                                
+                            }
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            
+                        }
+                        .tint(.primary)
+                        
                     }
                     .frame(width: geo.size.width/1.5, alignment: .leading)
+                    .padding(.bottom,50)
                 }
                 .scrollIndicators(.hidden)
             }

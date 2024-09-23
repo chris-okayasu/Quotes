@@ -93,6 +93,6 @@ struct QuoteView: View {
 }
 
 #Preview {
-    QuoteView(show: "Better Call Saul")
-//    QuoteView(show: "Breaking Bad")
+//    QuoteView(show: "Better Call Saul")
+    QuoteView(show: "Breaking Bad")
 }
