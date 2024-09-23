@@ -8,11 +8,56 @@
 import SwiftUI
 
 struct CharactareUI: View {
+    let character: Character
+    let show: String
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GeometryReader { geo in
+            ZStack (alignment: .top){
+                Image(show.lowercased().replacingOccurrences(of: " ", with:""))
+                    .resizable()
+                    .scaledToFit()
+                
+                ScrollView {
+                    AsyncImage(url: character.images[0]) {image in
+                        image
+                            .resizable()
+                            .scaledToFill()
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .frame(width: geo.size.width/1.2, height: geo.size.height/1.7)
+                    .clipShape(.rect(cornerRadius: 25))
+                    .padding(.top, 60)
+                    VStack(alignment: .leading) {
+                        Text(character.name)
+                            .font(.largeTitle)
+                        Text("Portrayed By: \(character.portrayedBy)")
+                            .font(.subheadline)
+                        Divider()
+                        Text("\(character.name) Info: ")
+                        Text("Born: \(character.birthday)")
+                        Divider()
+                        Text("Occupations:\n" + character.occupations.map { "‣ \($0)" }.joined(separator: "\n"))
+                            .font(.subheadline)
+                        Divider()
+                        if character.aliases.count > 0 {
+                            Text("Nicknames: ")
+                            Text("Occupations:\n" + character.aliases.map { "• \($0)" }.joined(separator: "\n"))
+                                .font(.subheadline)
+                            Divider()
+                        }
+                        
+                    }
+                    .frame(width: geo.size.width/1.5, alignment: .leading)
+                }
+                .scrollIndicators(.hidden)
+            }
+        }
+        .ignoresSafeArea()
+        .background(Color("bg-color"))
     }
 }
 
 #Preview {
-    CharactareUI()
+    CharactareUI(character: ViewModel().character , show: "Breaking Bad")
 }
