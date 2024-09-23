@@ -1,4 +1,7 @@
 # Quotes
+Be Careful!! 
+The following images could spoiler the story of Breaking Bad, Better Call Saul and El Camino
+
 # Version 1
 ![Screenshot 2024-09-23 at 15 25 37](https://github.com/user-attachments/assets/cd5ccfe8-8782-4dcd-a88e-82ca0d1e72b7)
 ![Screenshot 2024-09-23 at 15 25 56](https://github.com/user-attachments/assets/14f3b6ac-b1e0-41ff-a5b2-dc072acea6f2)
